@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	get 'author/:author_id', to: 'author#show', as: 'author'
 	get 'gossip/:gossip_id', to: 'gossip#show', as:'gossip'
 	get 'welcome/:name', to: 'welcome#show'
   get 'contact', to: 'contact#show'

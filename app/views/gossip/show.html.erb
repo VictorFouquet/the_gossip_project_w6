@@ -6,7 +6,7 @@
   <%= Gossip.find(params[:gossip_id]).content %>
   "
   <br>
-  Auteur :
+  <a href="/author/<%= Gossip.find(params[:gossip_id]).user.id %>/"> <%= Gossip.find(params[:gossip_id]).user.first_name %></a>
   <br><br>
   <%= Gossip.find(params[:gossip_id]).date.strftime("Créé le %d/%m/%Y") %>
 </p>

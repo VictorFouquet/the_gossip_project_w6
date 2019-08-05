@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 2019_08_05_124007) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
