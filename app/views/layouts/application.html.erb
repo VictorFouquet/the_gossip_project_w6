@@ -12,11 +12,12 @@
 
 <center>
   <body>
-  <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-  <a class="nav-link"> <%= link_to "Accueil", root_path %> </a>
-  <a class="nav-link"> <%= link_to "Team", team_path %> </a>
-  <a class="nav-link"> <%= link_to "Contact", contact_path %> </a>
-</nav>
+  <nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1">The Gossip Project</span>
+  <a class="navbar-brand"> <%= link_to "Accueil", root_path %> </a>
+  <a class="navbar-brand"> <%= link_to "Team", team_path %> </a>
+  <a class="navbar-brand"> <%= link_to "Contact", contact_path %> </a>
+  </nav>
     <%= yield %>
   </body>
 </center>
