@@ -1,24 +1,8 @@
-# README
+Premier jour du projet The Gossip Projetc sur rails!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Pour tester le site, fais un bundle install et lance le serveur via
+ton terminal, il ne te reste plus qu'à saisir localhost:3000 en URL
+dans ton explorateur favori et le tour est joué!
 
-Things you may want to cover:
+Bonne visite ;)
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
