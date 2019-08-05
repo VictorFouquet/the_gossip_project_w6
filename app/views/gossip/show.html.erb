@@ -1,0 +1,8 @@
+<head>
+<title>The Gossip Project</title>
+</head>
+<h3><%= Gossip.find(params[:gossip_id]).title %></h3>
+<p>
+  <%= Gossip.find(params[:gossip_id]).content %><br>
+  <br><%= Gossip.find(params[:gossip_id]).date.strftime("Créé le %d/%m/%Y") %>
+</p>

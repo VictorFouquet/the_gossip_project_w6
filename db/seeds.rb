@@ -10,13 +10,16 @@ Gossip.destroy_all
 User.destroy_all
 5.times do
 	User.create!(
-		name: Faker::Name.name,
+		first_name: Faker::Name.first_name,
+		last_name: Faker::Name.last_name,
 		email: Faker::Internet.email 
 		)
 end
 10.times do
 	Gossip.create!(
+		title: Faker::Coffee.blend_name,
 		content: Faker::Quote.most_interesting_man_in_the_world,
+		date: Faker::Date.between(from: 60.days.ago, to: Date.today).strftime("Créé le %d/%m/%Y"),
 		user: User.find(rand(User.first.id..User.last.id))
 		)
 end

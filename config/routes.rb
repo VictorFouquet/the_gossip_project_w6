@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+	get 'gossip/:gossip_id', to: 'gossip#show', as:'gossip'
+	get 'welcome/:name', to: 'welcome#show'
   get 'contact', to: 'contact#show'
   root 'static_pages#home'
   get 'team', to: 'team#show'

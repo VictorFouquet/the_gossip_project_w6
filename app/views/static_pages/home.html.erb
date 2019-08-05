@@ -1,16 +1,17 @@
 <head>
 <title>The Gossip Project</title>
 </head>
-<h1>Bienvenue sur The Gossip Project!</h1>
+<h2>Bienvenue sur The Gossip Project!</h2>
 <br/>
-<h2>Voici les potins !</h2>
+<h3>Voici les potins ! 🙈 🙉 🙊‍</h3>
 <% Gossip.all.each_with_index do |gossip, index| %>
 <p>
-  <h3> Gossip <%= index + 1 %></h3>
-  <b>Auteur : </b></br>
-  <%= gossip.user.name %></br>
-  </br><b>Gossip : </b></br>
-  <%= gossip.content %></br>
+  <h4> Gossip <%= index + 1 %></h4>
+  <b>Auteur : </b>
+  <%= gossip.user.first_name %></br>
+  <b>Gossip : </b>
+  <%= gossip.title %></br>
+  <a href="/gossip/<%= index + 1 %>/"> Lire le gossip</a>
   </br>
 </p>
 <% end %>
