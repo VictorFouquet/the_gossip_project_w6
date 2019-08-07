@@ -9,6 +9,7 @@
   "
   <br>
   <%= link_to @gossip.user.first_name, user_path(@gossip.user.id) %>
+  de <%= @gossip.user.city.name %>
   <br><br>
   <%= @gossip.date.strftime("Créé le %d/%m/%Y") %>
 </p>
