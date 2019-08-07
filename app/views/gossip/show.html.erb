@@ -3,13 +3,13 @@
 </head>
 <center>
 <br>
-<h4><%= Gossip.find(params[:gossip_id]).title %></h4>
+<h4><%= @gossip.title %></h4>
 <p>"
-  <%= Gossip.find(params[:gossip_id]).content %>
+  <%= @gossip.content %>
   "
   <br>
-  <a href="/author/<%= Gossip.find(params[:gossip_id]).user.id %>/"> <%= Gossip.find(params[:gossip_id]).user.first_name %></a>
+  <%= link_to @gossip.user.first_name, user_path(@gossip.user.id) %>
   <br><br>
-  <%= Gossip.find(params[:gossip_id]).date.strftime("Créé le %d/%m/%Y") %>
+  <%= @gossip.date.strftime("Créé le %d/%m/%Y") %>
 </p>
 </center>

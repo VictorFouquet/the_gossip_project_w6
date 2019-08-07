@@ -16,11 +16,19 @@ User.destroy_all
 		description: Faker::Movies::Lebowski.quote
 		)
 end
+
 10.times do
 	Gossip.create!(
-		title: Faker::Coffee.blend_name,
+		title: Faker::Hipster.word,
 		content: Faker::Quote.most_interesting_man_in_the_world,
 		date: Faker::Date.between(from: 60.days.ago, to: Date.today).strftime("Créé le %d/%m/%Y"),
 		user: User.find(rand(User.first.id..User.last.id))
 		)
 end
+
+User.create!(
+	first_name: "Ano",
+	last_name: "Nymous",
+	email: "ano.nymous@gmail.com", 
+	description: " We are Anonymous. We are Legion. We do not forgive. We do not forget. Expect us." 
+	)
