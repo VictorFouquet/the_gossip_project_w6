@@ -13,7 +13,16 @@
   <br><br>
   <%= @gossip.date.strftime("Créé le %d/%m/%Y") %><br/>
   <%= link_to "Editer le gossip!", edit_gossip_path(@gossip.id) %><br>
-  <%= link_to "Detruire le gossip?!", gossip_path(@gossip.id), method: :delete %>
-
-</p>
+  <%= link_to "Detruire le gossip?!", gossip_path(@gossip.id), method: :delete %><br/>
+ 
+<%= form_tag url_for(controller: 'comment', action: 'create', method: 'post') do %>
+  <%= label_tag 'Commentaire' %><br/>
+  <%= text_area_tag 'comment' %>
+  <%= hidden_field_tag 'gossip_id', @gossip.id %>
+  <br /> <br />
+  <%= submit_tag "Envoyer" %>
+  
+ </div>
+<% end %>
 </center>
+ 

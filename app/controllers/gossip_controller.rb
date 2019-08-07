@@ -2,6 +2,8 @@ class GossipController < ApplicationController
 
   def index
     @gossips = Gossip.all
+    @gossips = @gossips.sort_by{|gossip| gossip[:date]}
+    @gossips = @gossips.reverse
   end
 
   def show
