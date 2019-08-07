@@ -8,6 +8,9 @@ class GossipController < ApplicationController
 
   def show
   	@gossip = Gossip.find(params[:id])
+    @comments = @gossip.comments
+    @comments = @comments.sort_by{|comment| comment[:date]}
+    @comments = @comments.reverse
   end
 
   def new

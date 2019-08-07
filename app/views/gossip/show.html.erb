@@ -14,6 +14,20 @@
   <%= @gossip.date.strftime("Créé le %d/%m/%Y") %><br/>
   <%= link_to "Editer le gossip!", edit_gossip_path(@gossip.id) %><br>
   <%= link_to "Detruire le gossip?!", gossip_path(@gossip.id), method: :delete %><br/>
+  Commentaires :
+
+<% @comments.each do |comment| %>
+<center>
+<div class="card" style="width: 20rem;">
+  <div class="card-body">
+    <p class="card-text"><%= comment.user.first_name + " " + comment.user.last_name + " :" %><br>
+    	<%= comment.content %></br>
+    	<small><%= comment.date.strftime("Créé le %d/%m/%Y") %></small> </p>
+  </div>
+</div>
+<br>
+</center>
+<% end %>
  
 <%= form_tag url_for(controller: 'comment', action: 'create', method: 'post') do %>
   <%= label_tag 'Commentaire' %><br/>

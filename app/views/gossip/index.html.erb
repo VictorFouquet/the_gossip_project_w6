@@ -5,12 +5,17 @@
 
 <% if alert == "success" %>
   <div class="alert alert-success" role="alert">
-      <p>Your gossip has been correctly saved.</p>
+      <p>Ton gossip a bien été enregistré!</p>
   </div>
 <% elsif alert == "destroy" %>
 	<div class="alert alert-success" role="alert">
-      <p>Your gossip has been correctly destroyed.</p>
+      <p>Le gossip a bien été effacé!.</p>
   </div>
+<% elsif alert == "comment_success" %>
+	<div class="alert alert-success" role="alert">
+      <p>Ton commentaire à bien été enregistré!</p>
+  </div>
+  	
 <% end %>
 <br>
 <h2>Bienvenue sur The Gossip Project!</h2>
