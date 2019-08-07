@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	
-	resources :gossip, except: [:destroy] do
+	resources :gossip do
 		resources :comment, only: [:new, :create, :index, :destroy]
 	end
 

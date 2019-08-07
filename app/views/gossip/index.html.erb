@@ -2,9 +2,14 @@
 <title>The Gossip Project</title>
 </head>
 <center>
+
 <% if alert == "success" %>
   <div class="alert alert-success" role="alert">
       <p>Your gossip has been correctly saved.</p>
+  </div>
+<% elsif alert == "destroy" %>
+	<div class="alert alert-success" role="alert">
+      <p>Your gossip has been correctly destroyed.</p>
   </div>
 <% end %>
 <br>

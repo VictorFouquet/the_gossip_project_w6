@@ -11,6 +11,9 @@
   <%= link_to @gossip.user.first_name, user_path(@gossip.user.id) %>
   de <%= link_to @gossip.user.city.name, city_path(@gossip.user.city.id) %>
   <br><br>
-  <%= @gossip.date.strftime("Créé le %d/%m/%Y") %>
+  <%= @gossip.date.strftime("Créé le %d/%m/%Y") %><br/>
+  <%= link_to "Editer le gossip!", edit_gossip_path(@gossip.id) %><br>
+  <%= link_to "Detruire le gossip?!", gossip_path(@gossip.id), method: :delete %>
+
 </p>
 </center>
