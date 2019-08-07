@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>The Gossip Project</title>
+</head>
+<body>
+<center>
+<br>	
+<h4><%= @city.name %></h4>
+<p>
+	<% @city_users.each do |user| %>
+		<% user.gossips.each do |gossip| %>
+			<br>
+		<div class="card" style="width: 25rem;">
+ 			<div class="card-body">
+    	<h5 class="card-title"><b>"<%= gossip.title %>"</b></h5>
+    		<p class="card-text"><b>Auteur :</b> <%= user.first_name %></br> </p>
+    		<%= link_to "Lire le gossip", gossip_path(gossip.id) %>
+  		</div>
+		</div>
+		<% end %>
+		<br>
+	<% end %>
+</p>
+
+<div class="card" style="width: 25rem;">
+

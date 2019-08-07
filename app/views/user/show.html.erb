@@ -5,8 +5,13 @@
 	<br>
 	<h4><%= @user.first_name + " " + @user.last_name %></h4>
 		<p>
+			Description :<br/>
 			<%= @user.description %>
 			<br><br>
 			Email : <%= @user.email %>
+			<br/>
+			Ville : <%= link_to @user.city.name, city_path(@user.city.id) %>
+			<br/>
+			Age : <%= @user.age %> ans 
 		</p>
 	</center>

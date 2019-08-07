@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 	end
 
 	resources :user
+
+	resources :city
 	
 	get 'welcome/:name', to: 'welcome#show'
   
