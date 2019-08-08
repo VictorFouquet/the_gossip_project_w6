@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Like.destroy_all
 Gossip.destroy_all
 User.destroy_all
 City.destroy_all
@@ -27,6 +28,7 @@ n = 0
 		email: Faker::Internet.email, 
 		description: Faker::Movies::Lebowski.quote + "\n" * 3,
 		age: rand(18..35),
+		password: Faker::Code.ean,
 		city: City.find(City.first.id + n)
 		)
 	n += 1
@@ -38,6 +40,7 @@ end
 		last_name: Faker::Name.last_name,
 		email: Faker::Internet.email, 
 		description: Faker::Movies::Lebowski.quote + "\n" * 3,
+		password: Faker::Code.ean,
 		age: rand(18..35),
 		city: City.all.sample
 		)
@@ -63,6 +66,13 @@ end
 		)
 end
 
+100.times do
+	Like.create!(
+		user: User.all.sample,
+		gossip: Gossip.all.sample
+		)
+end
+
 City.create!(
 	name: "AnonymousCity"
 	)
@@ -73,5 +83,6 @@ User.create!(
 	email: "ano.nymous@gmail.com", 
 	description: " We are Anonymous. We are Legion. We do not forgive. We do not forget. Expect us.", 
 	age: 99,
+	password: "anonymous",
 	city: City.find_by(name: "AnonymousCity")
 	)
