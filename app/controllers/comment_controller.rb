@@ -1,4 +1,6 @@
 class CommentController < ApplicationController
+  
+  before_action :authenticate_user, only: [:new, :create, :show]
 
 	def new
 		@comment = Comment.new
@@ -32,5 +34,14 @@ class CommentController < ApplicationController
   	@gossip = Comment.find(params[:id]).gossip
     Comment.find(params[:id]).destroy
     redirect_to gossip_path(@gossip.id), :alert => "comment_destroy"
+  end
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Connecte toi pour accéder à toutes les fonctionnalités du site !"
+      redirect_to new_session_path
+    end
   end
 end

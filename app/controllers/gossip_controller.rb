@@ -1,5 +1,8 @@
 class GossipController < ApplicationController
 
+  before_action :authenticate_user, only: [:new, :create, :show]
+  before_action :corresponding_user, only: [:edit, :update, :destroy]
+
   def index
     @gossips = Gossip.all
     @gossips = @gossips.sort_by{|gossip| gossip[:date]}
@@ -43,5 +46,21 @@ class GossipController < ApplicationController
   def destroy
     Gossip.find(params[:id]).destroy
     redirect_to({ :action=>'index' }, :alert => "destroy")
+  end
+
+  private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Connecte toi pour accéder à toutes les fonctionnalités du site !"
+      redirect_to new_session_path
+    end
+  end
+
+  def corresponding_user
+    unless current_user == Gossip.find(params[:id]).user
+      flash[:danger] = "Impossible d'éditer le gossip si tu n'en es pas l'auteur !"
+      redirect_to gossip_path(params[:id])
+    end
   end
 end
