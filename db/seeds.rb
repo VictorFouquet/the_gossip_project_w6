@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Comment.destroy_all
 Like.destroy_all
 Gossip.destroy_all
 User.destroy_all
@@ -70,6 +71,15 @@ end
 	Like.create!(
 		user: User.all.sample,
 		gossip: Gossip.all.sample
+		)
+end
+
+100.times do
+	Comment.create!(
+		user: User.all.sample,
+		gossip: Gossip.all.sample,
+		date: Faker::Date.between(from: 60.days.ago, to: Date.today),
+		content: Faker::Movies::Lebowski.quote
 		)
 end
 

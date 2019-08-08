@@ -2,7 +2,7 @@
 <title>The Gossip Project</title>
 </head>
 <center>
-<body>
+<body style="background-color: lightblue;">
 
 <br>
 <% if alert == "success" %>
@@ -15,15 +15,15 @@
   </div>
 <% end %>
 
-  <div class="card" style="width: 35rem; margin-bottom: 5rem">
+  <div class="card" style="width: 80%; margin-bottom: 5rem">
     <div class="card-body">
-       <div class="card", style="width: 25rem; padding: 2rem; margin-top: 2rem; margin-bottom: 5rem">
-         <h3 class="card-title"><b><%= @gossip.title %></b></h3>
-          <div class="card" style="width: 20rem; padding: 2rem; margin-bottom: 2rem">
+      <h3 class="card-title"><b><%= @gossip.title.capitalize %></b></h3>
+       <div class="card", style="width: 80%; padding: 5%; margin-top: 2rem; margin-bottom: 5rem; background-color: #e8f4f8"><center>
+          <div class="card" style="width: 90%; padding: 5%; margin-bottom: 2rem">
             <p class="card-text">
               "<%= @gossip.content %>"
-            </p>
-          </div>
+            </p></center>
+
         
           <br/><br/>
         
@@ -31,13 +31,16 @@
         
           <br><br>
         
-          <small><%= @gossip.date.strftime("Créé le %d/%m/%Y") %></small>
+          <small, style="margin-bottom: 1rem"><%= @gossip.date.strftime("Créé le %d/%m/%Y") %></small>
 
-          <br/>
+          
         
           <% if current_user.id == @gossip.user.id %>
-            <%= link_to "Editer le gossip!", edit_gossip_path(@gossip.id) %><br>
-            <%= link_to "Detruire le gossip?!", gossip_path(@gossip.id), method: :delete %><br/>
+            <br/><br/>
+            <button type="button" class="btn btn-light"><%= link_to "Editer le gossip", edit_gossip_path(@gossip.id) %> </button>
+            <button type="button" class="btn btn-light"><%= link_to "Detruire le gossip", gossip_path(@gossip.id), method: :delete %>
+            </button>
+            <br/>
           <% end %>
           
           <br/><br/>
@@ -45,14 +48,19 @@
       <h4>Commentaires :</h4>
       
       <br> 
-      
+      <div class="card" style="width: 70%; padding: 5%; background-color: #e8f4f8"><center>
       <% @comments.each do |comment| %>
-        <div class="card" style="width: 20rem;">
+        <div class="card" style="width: 90%;">
           <div class="card-body">
-            <p class="card-text"><%= comment.user.first_name + " " + comment.user.last_name + " :" %><br>
-            <small><%= comment.date.strftime("Créé le %d/%m/%Y") %></small> <br/>
+            <h5 class="card-title", style="margin-left: 1rem">
+              <%= link_to comment.user.first_name + " " + comment.user.last_name + " :", user_path(comment.user.id) %>
+            </h5>
+            <p class="card-text" >
             <%= comment.content %></br>
-            <%= link_to "Editer le commentaire", edit_comment_path(comment.id) %>
+            <small><%= comment.date.strftime("Créé le %d/%m/%Y") %></small> <br/>
+            <% if comment.user == current_user%>
+              <%= link_to "Editer le commentaire", edit_comment_path(comment.id) %>
+            <% end %>
             </p>
           </div>
         </div>
@@ -67,7 +75,9 @@
         <br /> <br />
         
         <%= submit_tag "Envoyer" %><br/>
-  
+      
+      </div>
+      </center>
     </div>
     <% end %>
   </div>  

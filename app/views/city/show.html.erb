@@ -3,46 +3,47 @@
 	<title>The Gossip Project</title>
 </head>
 <body>
-<center>
-<br>	
-<h4><%= @city.name %></h4>
-<p>
-	<% @city_users.each do |user| %>
-		<% user.gossips.each do |gossip| %>
-			<br>
-			<div class="card" style="width: 25rem;">
- 				<div class="card-body">
-    			<h5 class="card-title">
-    				<b>"<%= gossip.title %>"</b></h5>
-    			<p class="card-text">
-    				<b>Auteur :</b> <%= user.first_name %></br> </p>
-    				<%= gossip.comments.length %> commentaire(s)<br>
-		    		<%= gossip.likes.length %> like(s) 
-		    		<% checker = nil %>
-		    		<% current_like = nil %>
-		    		<% unless current_user == nil %>
-		       		/ 
-		       		<% likes = gossip.likes %>
-		      		<% likes.each do |like| %>
-		        		<% checker = current_user.likes.include? like %>
-		        		<% if checker == true%>
-		          		<% current_like = like.id %>
-		          		<% break %>
-		        		<% end %>
-		      		<% end %>
-		      		<% unless checker %>
-		        		<%= link_to "Liker", like_index_path(:gossip => gossip), :method => :post %>
-		      		<% else %>
-		        		<%= link_to "Unliker", like_path(current_like), method: :delete %>
-		      		<% end %> 
-		      		<br/><br/>
-		      		<%= link_to "Lire le gossip", gossip_path(gossip.id) %> 
-		    		<% end %>
-		    		<br>
-		  	</div>
-			</div>
+
+<div class="card" style="width: 70%; padding: 5%; margin-top: 2rem;margin-bottom: 5rem">
+	<h1><b><%= @city.name %></b></h1>
+
+		<center>
+		<div class="card" style="width: 90%; padding: 5%; margin: 5%; background-color: #e8f4f8">
+			<% @city_users.each do |user| %>
+				<% user.gossips.each do |gossip| %>
+					<center>
+					<div class="card" style="width: 90%; padding: 3%%; margin: 5%">
+	 					<div class="card-body">
+	    				<h5 class="card-title"><b>"<%= gossip.title.capitalize %>"</b></h5>
+	    					<p class="card-text">
+	    						<b>Auteur :</b> <%= user.first_name %></br> </p>
+	    							<%= gossip.comments.length %> commentaire(s)<br>
+			    					<%= gossip.likes.length %> like(s) 
+			    					<% checker = nil %>
+			    					<% current_like = nil %>
+			    					<% unless current_user == nil %>
+			       					/ 
+			       					<% likes = gossip.likes %>
+			      					<% likes.each do |like| %>
+			        				<% checker = current_user.likes.include? like %>
+			        				<% if checker == true %>
+			          				<% current_like = like.id %>
+			          				<% break %>
+			        				<% end %>
+			      				<% end %>
+			      				<% unless checker %>
+			        				<%= link_to "Liker", like_index_path(:gossip => gossip), :method => :post %>
+			      				<% else %>
+			        				<%= link_to "Unliker", like_path(current_like), method: :delete %>
+			      				<% end %> 
+			      				<br/><br/>
+			      				<%= link_to "Lire le gossip", gossip_path(gossip.id) %> 
+			      			</div>
+			      			</div>
+			      			</center>
+			  <% end %>
+			<% end %>	
 		<% end %>
-		<br>
-	<% end %>
-</p>
-   
+		</div>
+	</center>
+</body>

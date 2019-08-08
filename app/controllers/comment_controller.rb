@@ -8,7 +8,7 @@ class CommentController < ApplicationController
 
 	def create
 		@comment = Comment.new(content: params[:comment], 
-			user: User.all.sample,
+			user: current_user,
 			gossip: Gossip.find(params[:gossip_id]), 
 			date: Date.today.strftime("Créé le %d/%m/%Y")
   	 )
