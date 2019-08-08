@@ -17,7 +17,7 @@ class GossipController < ApplicationController
 
  def create
    @gossip = Gossip.new(title:params[:title], content:params[:content], date: Date.today.strftime("Créé le %d/%m/%Y"))
-   @gossip.user = User.find_by(first_name:"Ano")    
+   @gossip.user = current_user
    if @gossip.save
     redirect_to({ :action=>'index' }, :alert => "success")
    else 

@@ -11,12 +11,12 @@ class SessionsController < ApplicationController
 		else
 			flash.now[:danger] = 'Combinaison email/password invalide! Veuillez réessayer!'
 			render 'new'
-			puts"wrong"
 		end
 	end
 
 	def destroy 
 		session.delete(:user_id)
+		redirect_to root_path
 	end
 
 end
