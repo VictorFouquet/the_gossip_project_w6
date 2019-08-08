@@ -15,7 +15,10 @@
 	<div class="alert alert-success" role="alert">
       <p>Ton commentaire à bien été enregistré!</p>
   </div>
-  	
+<% elsif alert == "success_user_create" %>
+  <div class="alert alert-success" role="alert">
+      <p>Ton inscription à bien été enregistrée!</p>
+  </div> 	
 <% end %>
 <br>
 <h2>Bienvenue sur The Gossip Project!</h2>
@@ -31,8 +34,9 @@
 <div class="card" style="width: 25rem;">
   <div class="card-body">
     <h5 class="card-title"><b>"<%= gossip.title %>"</b></h5>
-    <p class="card-text"><b>Auteur :</b> <%= gossip.user.first_name %></br> </p>
-    <%= link_to "Lire le gossip", gossip_path(gossip.id) %>
+    <p class="card-text"><b>Auteur :</b> <%= gossip.user.first_name %></br> 
+    <%= gossip.comments.length %> commentaire(s)<br>
+    <%= link_to "Lire le gossip", gossip_path(gossip.id) %></p>
   </div>
 </div>
 <br>

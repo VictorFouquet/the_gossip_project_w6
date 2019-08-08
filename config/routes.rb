@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
 	resources :city
 	
+	resources :sessions, only: [:new, :create, :destroy]
+	
 	get 'welcome/:name', to: 'welcome#show'
   
   get 'contact', to: 'contact#show'

@@ -2,7 +2,12 @@
 <html>
   <head>
     <title>TheGossipProject</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+   
+  </head>
+
+<center>
+  <body>
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,12 +19,16 @@
   <a class="navbar-brand"> <%= link_to "Accueil", root_path %> </a>
   <a class="navbar-brand"> <%= link_to "Team", team_path %> </a>
   <a class="navbar-brand"> <%= link_to "Contact", contact_path %> </a>
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Connexion/Inscription
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item"><%= link_to "Inscription", new_user_path %></a>
+      <a class="dropdown-item"><%= link_to "Connexion", new_session_path %></a>
+    </div>
+</div>
   </nav> 
-  </head>
-
-<center>
-  <body>
-  
     <%= yield %>
   </body>
 </center>
